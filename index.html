@@ -1,11 +1,899 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development | My Projects</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0b1020;
+            --panel: #121a2c;
+            --card: #172137;
+            --border: #28344d;
+            --text: #f3f5ff;
+            --muted: #96a3bc;
+            --accent: #a78bfa;
+            --cyan: #67e8d3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        button, a {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 250px minmax(0, 1fr);
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            background: #0e1526;
+            border-right: 1px solid var(--border);
+            padding: 28px 18px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 8px 32px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #a78bfa, #67e8d3);
+            color: #0b1020;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .brand h2 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .brand p {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .nav-label {
+            color: #71809c;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            padding: 0 12px;
+            margin-bottom: 12px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 13px 14px;
+            margin-bottom: 6px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--muted);
+            text-align: left;
+            font-size: 13px;
+            transition: .2s;
+        }
+
+        .nav-item:hover {
+            background: var(--card);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: #272442;
+            border-color: #40366b;
+            color: #c4b5fd;
+        }
+
+        .nav-icon {
+            width: 23px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        .sidebar-bottom {
+            margin-top: auto;
+            padding: 18px 10px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .sidebar-bottom p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* MAIN CONTENT */
+
+        .main {
+            min-width: 0;
+        }
+
+        .topbar {
+            height: 76px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            gap: 16px;
+        }
+
+        .breadcrumb {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .breadcrumb span {
+            color: var(--text);
+        }
+
+        .github-link {
+            border: 1px solid #39445b;
+            padding: 10px 15px;
+            border-radius: 9px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: .2s;
+        }
+
+        .github-link:hover {
+            border-color: var(--accent);
+            color: #c4b5fd;
+        }
+
+        .content {
+            max-width: 1250px;
+            margin: auto;
+            padding: 48px 5%;
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 17px;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1.2;
+            letter-spacing: -2px;
+            max-width: 650px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #c4b5fd, #67e8d3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero > p {
+            max-width: 590px;
+            margin-top: 18px;
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin: 34px 0 46px;
+        }
+
+        .stat {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 27px;
+            margin-bottom: 7px;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            font-size: 22px;
+            letter-spacing: -.7px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .section-tag {
+            color: #c4b5fd;
+            background: #24203d;
+            padding: 8px 11px;
+            border-radius: 8px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .task-card {
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            color: var(--text);
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 23px;
+            min-width: 0;
+            transition: transform .2s, border-color .2s;
+        }
+
+        .task-card:hover {
+            transform: translateY(-4px);
+            border-color: #8170c7;
+        }
+
+        .task-card.selected {
+            border-color: var(--accent);
+            background: linear-gradient(145deg, #201d3b, #121a2c 75%);
+        }
+
+        .task-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 26px;
+        }
+
+        .task-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            font-size: 23px;
+            background: #252643;
+            border: 1px solid #38365d;
+            border-radius: 13px;
+        }
+
+        .task-number {
+            color: #8390aa;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .task-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .task-card > p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+            min-height: 44px;
+        }
+
+        .task-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+            margin-top: 21px;
+            padding-top: 16px;
+        }
+
+        .task-type {
+            color: #b9a8ff;
+            font-size: 11px;
+        }
+
+        .open-task {
+            color: var(--cyan);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* TASK DETAIL PANEL */
+
+        .detail {
+            display: none;
+            margin-top: 44px;
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--panel);
+            scroll-margin-top: 24px;
+        }
+
+        .detail.visible {
+            display: block;
+            animation: appear .25s ease;
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .detail-label {
+            color: var(--cyan);
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .detail h2 {
+            font-size: 27px;
+            margin: 13px 0;
+            letter-spacing: -.8px;
+        }
+
+        .detail-intro {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .detail-content {
+            margin-top: 25px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        .detail-content h3 {
+            font-size: 16px;
+            margin: 22px 0 10px;
+        }
+
+        .detail-content p {
+            color: var(--muted);
+            margin-bottom: 13px;
+        }
+
+        .detail-content ul {
+            padding-left: 22px;
+            color: var(--muted);
+        }
+
+        .detail-content li {
+            padding: 4px 0;
+        }
+
+        .preview-box {
+            margin-top: 20px;
+            background: #0c1425;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .preview-box h3 {
+            margin-top: 0;
+        }
+
+        .preview-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-tile {
+            height: 95px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            font-size: 24px;
+        }
+
+        .gallery-tile:nth-child(1) {
+            background: linear-gradient(135deg, #41366e, #1b4260);
+        }
+
+        .gallery-tile:nth-child(2) {
+            background: linear-gradient(135deg, #245b58, #26335d);
+        }
+
+        .gallery-tile:nth-child(3) {
+            background: linear-gradient(135deg, #76506d, #3b416d);
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #a78bfa;
+            color: #0b1020;
+            padding: 12px 16px;
+            border-radius: 9px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 20px;
+            border: none;
+        }
+
+        .action-link:hover {
+            background: #c4b5fd;
+        }
+
+        .footer {
+            border-top: 1px solid var(--border);
+            margin-top: 55px;
+            padding-top: 22px;
+            color: #74819b;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 850px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                padding: 15px 18px;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .brand {
+                padding-bottom: 16px;
+            }
+
+            .sidebar .nav-label,
+            .sidebar-bottom {
+                display: none;
+            }
+
+            .sidebar nav {
+                display: flex;
+                gap: 7px;
+                overflow-x: auto;
+            }
+
+            .nav-item {
+                width: auto;
+                white-space: nowrap;
+                margin: 0;
+                padding: 10px 12px;
+            }
+
+            .content {
+                padding-top: 35px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .topbar {
+                height: 62px;
+                padding: 0 18px;
+            }
+
+            .content {
+                padding: 30px 18px;
+            }
+
+            .stats {
+                gap: 9px;
+                margin: 27px 0 35px;
+            }
+
+            .stat {
+                padding: 13px;
+            }
+
+            .stat strong {
+                font-size: 22px;
+            }
+
+            .stat span {
+                font-size: 10px;
+            }
+
+            .task-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2 {
+                font-size: 19px;
+            }
+
+            .detail {
+                padding: 19px;
+            }
+
+            .preview-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-tile {
+                height: 75px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to My Website!</h1>
-    <p>Hello! I am learning web development.</p>
-     <a href="https://syedanajeeha023.github.io/Image-Gallery/">Task 2</a>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">&lt;/&gt;</div>
+            <div>
+                <h2>DevSpace</h2>
+                <p>MY LEARNING PORTFOLIO</p>
+            </div>
+        </div>
+
+        <p class="nav-label">WORKSPACE</p>
+
+        <nav>
+            <button class="nav-item active" data-page="home">
+                <span class="nav-icon">⌂</span> Overview
+            </button>
+            <button class="nav-item" data-page="task1">
+                <span class="nav-icon">01</span> Task 1
+            </button>
+            <button class="nav-item" data-page="task2">
+                <span class="nav-icon">02</span> Task 2
+            </button>
+            <button class="nav-item" data-page="task3">
+                <span class="nav-icon">03</span> Task 3
+            </button>
+            <button class="nav-item" data-page="task4">
+                <span class="nav-icon">04</span> Task 4
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Learning by building.</p>
+            <p>HTML · CSS · JavaScript</p>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div class="breadcrumb">
+                Workspace / <span id="breadcrumb-name">Overview</span>
+            </div>
+            <a class="github-link"
+               href="https://github.com/SyedaNajeeha023/Web-Development"
+               target="_blank" rel="noopener noreferrer">
+                ↗ View GitHub
+            </a>
+        </header>
+
+        <div class="content">
+
+            <section class="hero" id="overview">
+                <div class="eyebrow">✦ MY WEB DEVELOPMENT JOURNEY</div>
+                <h1>
+                    Turning ideas into
+                    <span class="gradient-text">web experiences.</span>
+                </h1>
+                <p>
+                    Welcome to my Web Development workspace. Explore my
+                    practice tasks, discover the projects I've built, and
+                    follow my progress as I learn to create websites.
+                </p>
+            </section>
+
+            <section class="stats">
+                <div class="stat">
+                    <strong>04</strong>
+                    <span>Task slots</span>
+                </div>
+                <div class="stat">
+                    <strong>03</strong>
+                    <span>Core web technologies</span>
+                </div>
+                <div class="stat">
+                    <strong>∞</strong>
+                    <span>Ideas to explore</span>
+                </div>
+            </section>
+
+            <section id="tasks">
+                <div class="section-heading">
+                    <div>
+                        <h2>Explore my tasks</h2>
+                        <p>Select a project to see its details.</p>
+                    </div>
+                    <span class="section-tag">MY PROJECTS</span>
+                </div>
+
+                <div class="task-grid">
+
+                    <button class="task-card" data-page="task1">
+                        <div class="task-top">
+                            <span class="task-icon">⌨️</span>
+                            <span class="task-number">TASK / 01</span>
+                        </div>
+                        <h3>My First Website</h3>
+                        <p>A simple introduction webpage built with basic HTML elements.</p>
+                        <div class="task-footer">
+                            <span class="task-type">HTML · Beginner</span>
+                            <span class="open-task">Explore ↗</span>
+                        </div>
+                    </button>
+
+                    <button class="task-card" data-page="task2">
+                        <div class="task-top">
+                            <span class="task-icon">▦</span>
+                            <span class="task-number">TASK / 02</span>
+                        </div>
+                        <h3>Image Gallery</h3>
+                        <p>A visual gallery project for displaying images in an organized layout.</p>
+                        <div class="task-footer">
+                            <span class="task-type">HTML · CSS</span>
+                            <span class="open-task">Explore ↗</span>
+                        </div>
+                    </button>
+
+                    <button class="task-card" data-page="task3">
+                        <div class="task-top">
+                            <span class="task-icon">⊞</span>
+                            <span class="task-number">TASK / 03</span>
+                        </div>
+                        <h3>Calculator</h3>
+                        <p>A calculator interface with number buttons and arithmetic operations.</p>
+                        <div class="task-footer">
+                            <span class="task-type">HTML · CSS · JS</span>
+                            <span class="open-task">Explore ↗</span>
+                        </div>
+                    </button>
+
+                    <button class="task-card" data-page="task4">
+                        <div class="task-top">
+                            <span class="task-icon">✦</span>
+                            <span class="task-number">TASK / 04</span>
+                        </div>
+                        <h3>Coming Next</h3>
+                        <p>A space for my next web development exercise or creative project.</p>
+                        <div class="task-footer">
+                            <span class="task-type">Future project</span>
+                            <span class="open-task">Explore ↗</span>
+                        </div>
+                    </button>
+
+                </div>
+            </section>
+
+            <section class="detail" id="detail" aria-live="polite">
+                <div class="detail-label" id="detail-label">PROJECT DETAILS</div>
+                <h2 id="detail-title">Project title</h2>
+                <p class="detail-intro" id="detail-intro"></p>
+                <div class="detail-content" id="detail-content"></div>
+            </section>
+
+            <footer class="footer">
+                <p>DEVSPACE — WEB DEVELOPMENT PORTFOLIO</p>
+                <p>Built with curiosity, creativity and code.</p>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    const tasks = {
+        task1: {
+            number: "TASK 01",
+            title: "My First Website",
+            intro: "My introduction to web development: creating a webpage using the fundamental building blocks of HTML.",
+            content: `
+                <h3>Project overview</h3>
+                <p>This project introduces the basic structure of an HTML document and how a browser displays its content.</p>
+                <h3>What I learned</h3>
+                <ul>
+                    <li>HTML document structure and essential tags.</li>
+                    <li>Headings, paragraphs and hyperlinks.</li>
+                    <li>Connecting one webpage to another.</li>
+                </ul>
+                <div class="preview-box">
+                    <h3>Live preview</h3>
+                    <p style="color:#f3f5ff;font-size:22px;font-weight:700;">Welcome to My Website!</p>
+                    <p>Hello! I am learning web development.</p>
+                    <p>This is my first step towards building websites.</p>
+                </div>
+            `
+        },
+
+        task2: {
+            number: "TASK 02",
+            title: "Image Gallery",
+            intro: "A visual project focused on organizing images into a clean, attractive and responsive gallery.",
+            content: `
+                <h3>Project overview</h3>
+                <p>The gallery project explores how images can be arranged into a visually engaging webpage.</p>
+                <h3>Skills explored</h3>
+                <ul>
+                    <li>HTML image elements and alternative text.</li>
+                    <li>CSS layouts, spacing and responsive grids.</li>
+                    <li>Creating a consistent visual presentation.</li>
+                </ul>
+                <div class="preview-box">
+                    <h3>Gallery concept</h3>
+                    <p>A preview of the type of layout used in an image gallery.</p>
+                    <div class="preview-gallery">
+                        <div class="gallery-tile">🌄</div>
+                        <div class="gallery-tile">🌿</div>
+                        <div class="gallery-tile">🌌</div>
+                    </div>
+                </div>
+                <a class="action-link"
+                   href="https://syedanajeeha023.github.io/Image-Gallery/"
+                   target="_blank" rel="noopener noreferrer">
+                    Open Image Gallery ↗
+                </a>
+            `
+        },
+
+        task3: {
+            number: "TASK 03",
+            title: "Calculator",
+            intro: "A calculator interface designed to combine visual design with interactive arithmetic functionality.",
+            content: `
+                <h3>Project overview</h3>
+                <p>This project brings together interface styling, button interactions and calculation logic.</p>
+                <h3>Skills explored</h3>
+                <ul>
+                    <li>Designing a structured calculator layout with CSS Grid.</li>
+                    <li>Using JavaScript to respond to button clicks.</li>
+                    <li>Handling numbers, operators and calculation results.</li>
+                </ul>
+                <div class="preview-box">
+                    <h3>Next improvement</h3>
+                    <p>Add working JavaScript functions, input validation and error handling to make the calculator fully functional.</p>
+                </div>
+            `
+        },
+
+        task4: {
+            number: "TASK 04",
+            title: "Coming Next",
+            intro: "This section is reserved for my next web development task.",
+            content: `
+                <h3>What's next?</h3>
+                <p>As I continue learning, I will add new projects and document the skills used to build each one.</p>
+                <ul>
+                    <li>Choose a new project idea.</li>
+                    <li>Build the interface with HTML and CSS.</li>
+                    <li>Add interactivity with JavaScript when needed.</li>
+                    <li>Publish the completed project using GitHub Pages.</li>
+                </ul>
+            `
+        }
+    };
+
+    const detail = document.getElementById("detail");
+    const title = document.getElementById("detail-title");
+    const label = document.getElementById("detail-label");
+    const intro = document.getElementById("detail-intro");
+    const content = document.getElementById("detail-content");
+    const breadcrumb = document.getElementById("breadcrumb-name");
+
+    function showPage(page) {
+        document.querySelectorAll(".nav-item, .task-card").forEach(item => {
+            item.classList.toggle("active", item.dataset.page === page &&
+                item.classList.contains("nav-item"));
+
+            if (item.classList.contains("task-card")) {
+                item.classList.toggle("selected", item.dataset.page === page);
+            }
+        });
+
+        if (page === "home") {
+            detail.classList.remove("visible");
+            breadcrumb.textContent = "Overview";
+            document.getElementById("overview").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+            return;
+        }
+
+        const task = tasks[page];
+        if (!task) return;
+
+        label.textContent = task.number + " / PROJECT DETAILS";
+        title.textContent = task.title;
+        intro.textContent = task.intro;
+        content.innerHTML = task.content;
+        breadcrumb.textContent = task.title;
+
+        detail.classList.add("visible");
+
+        detail.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+
+    document.querySelectorAll("[data-page]").forEach(button => {
+        button.addEventListener("click", () => {
+            showPage(button.dataset.page);
+        });
+    });
+</script>
 
 </body>
 </html>
