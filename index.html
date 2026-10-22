@@ -2,591 +2,620 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development | My Projects</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <style>
-        :root {
-            --bg: #0b1020;
-            --panel: #121a2c;
-            --card: #172137;
-            --border: #28344d;
-            --text: #f3f5ff;
-            --muted: #96a3bc;
-            --accent: #a78bfa;
-            --cyan: #67e8d3;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
-
-        button, a {
-            font: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .layout {
-            display: grid;
-            grid-template-columns: 250px minmax(0, 1fr);
-            min-height: 100vh;
-        }
-
-        /* SIDEBAR */
-
-        .sidebar {
-            background: #0e1526;
-            border-right: 1px solid var(--border);
-            padding: 28px 18px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 0 8px 32px;
-        }
-
-        .brand-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 13px;
-            background: linear-gradient(135deg, #a78bfa, #67e8d3);
-            color: #0b1020;
-            display: grid;
-            place-items: center;
-            font-weight: 800;
-            font-size: 20px;
-        }
-
-        .brand h2 {
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .brand p {
-            color: var(--muted);
-            font-size: 11px;
-            margin-top: 5px;
-        }
-
-        .nav-label {
-            color: #71809c;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            padding: 0 12px;
-            margin-bottom: 12px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-            padding: 13px 14px;
-            margin-bottom: 6px;
-            border: 1px solid transparent;
-            border-radius: 10px;
-            background: transparent;
-            color: var(--muted);
-            text-align: left;
-            font-size: 13px;
-            transition: .2s;
-        }
-
-        .nav-item:hover {
-            background: var(--card);
-            color: white;
-        }
-
-        .nav-item.active {
-            background: #272442;
-            border-color: #40366b;
-            color: #c4b5fd;
-        }
-
-        .nav-icon {
-            width: 23px;
-            text-align: center;
-            font-size: 17px;
-        }
-
-        .sidebar-bottom {
-            margin-top: auto;
-            padding: 18px 10px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .sidebar-bottom p {
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.8;
-        }
-
-        /* MAIN CONTENT */
-
-        .main {
-            min-width: 0;
-        }
-
-        .topbar {
-            height: 76px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            gap: 16px;
-        }
-
-        .breadcrumb {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .breadcrumb span {
-            color: var(--text);
-        }
-
-        .github-link {
-            border: 1px solid #39445b;
-            padding: 10px 15px;
-            border-radius: 9px;
-            font-size: 12px;
-            font-weight: 600;
-            white-space: nowrap;
-            transition: .2s;
-        }
-
-        .github-link:hover {
-            border-color: var(--accent);
-            color: #c4b5fd;
-        }
-
-        .content {
-            max-width: 1250px;
-            margin: auto;
-            padding: 48px 5%;
-        }
-
-        .eyebrow {
-            color: var(--cyan);
-            text-transform: uppercase;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 17px;
-        }
-
-        .hero h1 {
-            font-size: clamp(30px, 4vw, 48px);
-            line-height: 1.2;
-            letter-spacing: -2px;
-            max-width: 650px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #c4b5fd, #67e8d3);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .hero > p {
-            max-width: 590px;
-            margin-top: 18px;
-            color: var(--muted);
-            line-height: 1.9;
-            font-size: 14px;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-            margin: 34px 0 46px;
-        }
-
-        .stat {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 20px;
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 27px;
-            margin-bottom: 7px;
-        }
-
-        .stat span {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        .section-heading {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 22px;
-        }
-
-        .section-heading h2 {
-            font-size: 22px;
-            letter-spacing: -.7px;
-        }
-
-        .section-heading p {
-            color: var(--muted);
-            font-size: 12px;
-            margin-top: 8px;
-        }
-
-        .section-tag {
-            color: #c4b5fd;
-            background: #24203d;
-            padding: 8px 11px;
-            border-radius: 8px;
-            font-size: 11px;
-            white-space: nowrap;
-        }
-
-        .task-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .task-card {
-            position: relative;
-            overflow: hidden;
-            text-align: left;
-            color: var(--text);
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 23px;
-            min-width: 0;
-            transition: transform .2s, border-color .2s;
-        }
-
-        .task-card:hover {
-            transform: translateY(-4px);
-            border-color: #8170c7;
-        }
-
-        .task-card.selected {
-            border-color: var(--accent);
-            background: linear-gradient(145deg, #201d3b, #121a2c 75%);
-        }
-
-        .task-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 26px;
-        }
-
-        .task-icon {
-            width: 49px;
-            height: 49px;
-            display: grid;
-            place-items: center;
-            font-size: 23px;
-            background: #252643;
-            border: 1px solid #38365d;
-            border-radius: 13px;
-        }
-
-        .task-number {
-            color: #8390aa;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .task-card h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .task-card > p {
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.8;
-            min-height: 44px;
-        }
-
-        .task-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            border-top: 1px solid var(--border);
-            margin-top: 21px;
-            padding-top: 16px;
-        }
-
-        .task-type {
-            color: #b9a8ff;
-            font-size: 11px;
-        }
-
-        .open-task {
-            color: var(--cyan);
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        /* TASK DETAIL PANEL */
-
-        .detail {
-            display: none;
-            margin-top: 44px;
-            padding: 28px;
-            border: 1px solid var(--border);
-            border-radius: 17px;
-            background: var(--panel);
-            scroll-margin-top: 24px;
-        }
-
-        .detail.visible {
-            display: block;
-            animation: appear .25s ease;
-        }
-
-        @keyframes appear {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .detail-label {
-            color: var(--cyan);
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        .detail h2 {
-            font-size: 27px;
-            margin: 13px 0;
-            letter-spacing: -.8px;
-        }
-
-        .detail-intro {
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.9;
-        }
-
-        .detail-content {
-            margin-top: 25px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-            line-height: 1.9;
-            font-size: 14px;
-        }
-
-        .detail-content h3 {
-            font-size: 16px;
-            margin: 22px 0 10px;
-        }
-
-        .detail-content p {
-            color: var(--muted);
-            margin-bottom: 13px;
-        }
-
-        .detail-content ul {
-            padding-left: 22px;
-            color: var(--muted);
-        }
-
-        .detail-content li {
-            padding: 4px 0;
-        }
-
-        .preview-box {
-            margin-top: 20px;
-            background: #0c1425;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 22px;
-        }
-
-        .preview-box h3 {
-            margin-top: 0;
-        }
-
-        .preview-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .gallery-tile {
-            height: 95px;
-            display: grid;
-            place-items: center;
-            border-radius: 10px;
-            font-size: 24px;
-        }
-
-        .gallery-tile:nth-child(1) {
-            background: linear-gradient(135deg, #41366e, #1b4260);
-        }
-
-        .gallery-tile:nth-child(2) {
-            background: linear-gradient(135deg, #245b58, #26335d);
-        }
-
-        .gallery-tile:nth-child(3) {
-            background: linear-gradient(135deg, #76506d, #3b416d);
-        }
-
-        .action-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #a78bfa;
-            color: #0b1020;
-            padding: 12px 16px;
-            border-radius: 9px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-top: 20px;
-            border: none;
-        }
-
-        .action-link:hover {
-            background: #c4b5fd;
-        }
-
-        .footer {
-            border-top: 1px solid var(--border);
-            margin-top: 55px;
-            padding-top: 22px;
-            color: #74819b;
-            font-size: 11px;
-            line-height: 1.8;
-        }
-
-        @media (max-width: 850px) {
-            .layout {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                padding: 15px 18px;
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .brand {
-                padding-bottom: 16px;
-            }
-
-            .sidebar .nav-label,
-            .sidebar-bottom {
-                display: none;
-            }
-
-            .sidebar nav {
-                display: flex;
-                gap: 7px;
-                overflow-x: auto;
-            }
-
-            .nav-item {
-                width: auto;
-                white-space: nowrap;
-                margin: 0;
-                padding: 10px 12px;
-            }
-
-            .content {
-                padding-top: 35px;
-            }
-        }
-
-        @media (max-width: 540px) {
-            .topbar {
-                height: 62px;
-                padding: 0 18px;
-            }
-
-            .content {
-                padding: 30px 18px;
-            }
-
-            .stats {
-                gap: 9px;
-                margin: 27px 0 35px;
-            }
-
-            .stat {
-                padding: 13px;
-            }
-
-            .stat strong {
-                font-size: 22px;
-            }
-
-            .stat span {
-                font-size: 10px;
-            }
-
-            .task-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-heading h2 {
-                font-size: 19px;
-            }
-
-            .detail {
-                padding: 19px;
-            }
-
-            .preview-gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-tile {
-                height: 75px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevSpace | Web Development Portfolio</title>
+<meta name="description" content="Explore my web development projects, HTML, CSS and JavaScript tasks.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #f6f7fc;
+    --white: #ffffff;
+    --text: #262641;
+    --muted: #777990;
+    --border: #e7e7f1;
+    --purple: #7965df;
+    --purple-light: #f0edff;
+    --blue: #408eae;
+    --shadow: 0 8px 28px rgba(45, 43, 85, .06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+button, a {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 245px minmax(0, 1fr);
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    padding: 28px 17px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px 35px;
+}
+
+.brand-logo {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #8c79ef, #94d9e5);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.brand h2 {
+    font-size: 17px;
+    letter-spacing: -.5px;
+}
+
+.brand p {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+.nav-label {
+    color: #9697aa;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    padding: 0 12px;
+    margin-bottom: 13px;
+}
+
+.nav-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 12px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 5px;
+    transition: .2s;
+}
+
+.nav-item:hover {
+    background: #f7f5ff;
+    color: var(--purple);
+}
+
+.nav-item.active {
+    background: var(--purple-light);
+    border-color: #e3dcff;
+    color: #6652c8;
+    font-weight: 600;
+}
+
+.nav-icon {
+    min-width: 24px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 18px 10px 0;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 2;
+}
+
+/* MAIN AREA */
+
+.main {
+    min-width: 0;
+}
+
+.topbar {
+    min-height: 72px;
+    padding: 15px 5%;
+    background: rgba(255, 255, 255, .9);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.breadcrumb {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.breadcrumb span {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.github-link {
+    padding: 10px 14px;
+    border: 1px solid #dedced;
+    border-radius: 9px;
+    color: #5d4cae;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+.github-link:hover {
+    background: var(--purple-light);
+    border-color: #c9bfff;
+}
+
+.content {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 47px 5%;
+}
+
+.eyebrow {
+    color: #6c59ca;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 17px;
+}
+
+.hero h1 {
+    max-width: 680px;
+    font-size: clamp(31px, 4vw, 48px);
+    line-height: 1.2;
+    letter-spacing: -2px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #7965df, #3c9cb5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero > p {
+    max-width: 600px;
+    margin-top: 18px;
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+/* STATISTICS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 34px 0 45px;
+}
+
+.stat {
+    padding: 21px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.stat strong {
+    display: block;
+    font-size: 27px;
+    color: #6251bb;
+    margin-bottom: 7px;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* TASK CARDS */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    font-size: 22px;
+    letter-spacing: -.7px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.section-tag {
+    background: var(--purple-light);
+    color: #6652c8;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.task-card {
+    text-align: left;
+    color: var(--text);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 23px;
+    min-width: 0;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.task-card:hover {
+    transform: translateY(-4px);
+    border-color: #c4b7ff;
+    box-shadow: 0 12px 30px rgba(91, 72, 166, .09);
+}
+
+.task-card.selected {
+    border-color: #a99af5;
+    background: linear-gradient(145deg, #f3f0ff, #ffffff 80%);
+}
+
+.task-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.task-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: #f0edff;
+    border: 1px solid #e3dcff;
+    font-size: 22px;
+}
+
+.task-number {
+    color: #9697aa;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.task-card h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.task-card > p {
+    min-height: 44px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.task-type {
+    color: #7563c7;
+    font-size: 10px;
+}
+
+.open-task {
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* SELECTED TASK CONTENT */
+
+.detail {
+    display: none;
+    margin-top: 42px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    scroll-margin-top: 22px;
+}
+
+.detail.visible {
+    display: block;
+    animation: fadeIn .25s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.detail-label {
+    color: #6c59ca;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.detail h2 {
+    font-size: 27px;
+    margin: 13px 0;
+    letter-spacing: -.7px;
+}
+
+.detail-intro,
+.detail-content p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.detail-content {
+    margin-top: 24px;
+    padding-top: 23px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.detail-content h3 {
+    margin: 20px 0 10px;
+    font-size: 16px;
+}
+
+.detail-content h3:first-child {
+    margin-top: 0;
+}
+
+.detail-content ul {
+    padding-left: 21px;
+    color: var(--muted);
+}
+
+.detail-content li {
+    padding: 4px 0;
+}
+
+.preview-box {
+    background: #f8f8fd;
+    border: 1px solid var(--border);
+    padding: 22px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.preview-box h3 {
+    margin-top: 0;
+}
+
+.preview-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.gallery-tile {
+    min-height: 110px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    font-size: 27px;
+}
+
+.gallery-tile:nth-child(1) {
+    background: linear-gradient(135deg, #e9ddff, #d7e7ff);
+}
+
+.gallery-tile:nth-child(2) {
+    background: linear-gradient(135deg, #d9f4e8, #d9e9ff);
+}
+
+.gallery-tile:nth-child(3) {
+    background: linear-gradient(135deg, #ffe4ed, #e8ddff);
+}
+
+.action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 9px;
+    background: var(--purple);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.action-link:hover {
+    background: #6652c8;
+}
+
+.calculator-frame {
+    display: block;
+    width: 100%;
+    height: 620px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: #f6f7fc;
+    margin-top: 20px;
+}
+
+.footer {
+    margin-top: 52px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    color: #85869c;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 850px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        padding: 16px 18px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+        padding-bottom: 18px;
+    }
+
+    .nav-label,
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .sidebar nav {
+        display: flex;
+        overflow-x: auto;
+        gap: 6px;
+    }
+
+    .nav-item {
+        width: auto;
+        white-space: nowrap;
+        margin-bottom: 0;
+    }
+
+    .content {
+        padding-top: 35px;
+    }
+}
+
+@media (max-width: 540px) {
+    .topbar {
+        padding: 14px 18px;
+    }
+
+    .content {
+        padding: 30px 18px;
+    }
+
+    .stats {
+        gap: 9px;
+        margin: 26px 0 35px;
+    }
+
+    .stat {
+        padding: 13px;
+    }
+
+    .stat strong {
+        font-size: 22px;
+    }
+
+    .stat span {
+        font-size: 10px;
+    }
+
+    .task-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 19px;
+    }
+
+    .detail {
+        padding: 19px;
+    }
+
+    .preview-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-tile {
+        min-height: 75px;
+    }
+
+    .calculator-frame {
+        height: 560px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -595,7 +624,7 @@
 
     <aside class="sidebar">
         <div class="brand">
-            <div class="brand-icon">&lt;/&gt;</div>
+            <div class="brand-logo">&lt;/&gt;</div>
             <div>
                 <h2>DevSpace</h2>
                 <p>MY LEARNING PORTFOLIO</p>
@@ -615,7 +644,7 @@
                 <span class="nav-icon">02</span> Task 2
             </button>
             <button class="nav-item" data-page="task3">
-                <span class="nav-icon">03</span> Task 3
+                <span class="nav-icon">03</span> Calculator
             </button>
             <button class="nav-item" data-page="task4">
                 <span class="nav-icon">04</span> Task 4
@@ -651,8 +680,8 @@
                 </h1>
                 <p>
                     Welcome to my Web Development workspace. Explore my
-                    practice tasks, discover the projects I've built, and
-                    follow my progress as I learn to create websites.
+                    practice tasks, discover my projects, and follow my
+                    journey as I learn to build creative websites.
                 </p>
             </section>
 
@@ -701,7 +730,7 @@
                             <span class="task-number">TASK / 02</span>
                         </div>
                         <h3>Image Gallery</h3>
-                        <p>A visual gallery project for displaying images in an organized layout.</p>
+                        <p>A gallery project for displaying images in an organized layout.</p>
                         <div class="task-footer">
                             <span class="task-type">HTML · CSS</span>
                             <span class="open-task">Explore ↗</span>
@@ -714,9 +743,9 @@
                             <span class="task-number">TASK / 03</span>
                         </div>
                         <h3>Calculator</h3>
-                        <p>A calculator interface with number buttons and arithmetic operations.</p>
+                        <p>My calculator project with a custom interface and arithmetic operations.</p>
                         <div class="task-footer">
-                            <span class="task-type">HTML · CSS · JS</span>
+                            <span class="task-type">HTML · CSS · JavaScript</span>
                             <span class="open-task">Explore ↗</span>
                         </div>
                     </button>
@@ -738,8 +767,8 @@
             </section>
 
             <section class="detail" id="detail" aria-live="polite">
-                <div class="detail-label" id="detail-label">PROJECT DETAILS</div>
-                <h2 id="detail-title">Project title</h2>
+                <div class="detail-label" id="detail-label"></div>
+                <h2 id="detail-title"></h2>
                 <p class="detail-intro" id="detail-intro"></p>
                 <div class="detail-content" id="detail-content"></div>
             </section>
@@ -754,145 +783,146 @@
 </div>
 
 <script>
-    const tasks = {
-        task1: {
-            number: "TASK 01",
-            title: "My First Website",
-            intro: "My introduction to web development: creating a webpage using the fundamental building blocks of HTML.",
-            content: `
-                <h3>Project overview</h3>
-                <p>This project introduces the basic structure of an HTML document and how a browser displays its content.</p>
-                <h3>What I learned</h3>
-                <ul>
-                    <li>HTML document structure and essential tags.</li>
-                    <li>Headings, paragraphs and hyperlinks.</li>
-                    <li>Connecting one webpage to another.</li>
-                </ul>
-                <div class="preview-box">
-                    <h3>Live preview</h3>
-                    <p style="color:#f3f5ff;font-size:22px;font-weight:700;">Welcome to My Website!</p>
-                    <p>Hello! I am learning web development.</p>
-                    <p>This is my first step towards building websites.</p>
-                </div>
-            `
-        },
+const tasks = {
+    task1: {
+        number: "TASK 01",
+        title: "My First Website",
+        intro: "My introduction to web development through the fundamental building blocks of HTML.",
+        content: `
+            <h3>Project overview</h3>
+            <p>A simple webpage introducing myself and demonstrating basic HTML elements.</p>
+            <h3>What I learned</h3>
+            <ul>
+                <li>HTML document structure and essential tags.</li>
+                <li>Headings, paragraphs and hyperlinks.</li>
+                <li>Connecting one webpage to another.</li>
+            </ul>
+            <div class="preview-box">
+                <h3>Page preview</h3>
+                <p style="color:#262641;font-size:22px;font-weight:700;">
+                    Welcome to My Website!
+                </p>
+                <p>Hello! I am learning web development.</p>
+            </div>
+        `
+    },
 
-        task2: {
-            number: "TASK 02",
-            title: "Image Gallery",
-            intro: "A visual project focused on organizing images into a clean, attractive and responsive gallery.",
-            content: `
-                <h3>Project overview</h3>
-                <p>The gallery project explores how images can be arranged into a visually engaging webpage.</p>
-                <h3>Skills explored</h3>
-                <ul>
-                    <li>HTML image elements and alternative text.</li>
-                    <li>CSS layouts, spacing and responsive grids.</li>
-                    <li>Creating a consistent visual presentation.</li>
-                </ul>
-                <div class="preview-box">
-                    <h3>Gallery concept</h3>
-                    <p>A preview of the type of layout used in an image gallery.</p>
-                    <div class="preview-gallery">
-                        <div class="gallery-tile">🌄</div>
-                        <div class="gallery-tile">🌿</div>
-                        <div class="gallery-tile">🌌</div>
-                    </div>
-                </div>
-                <a class="action-link"
-                   href="https://syedanajeeha023.github.io/Image-Gallery/"
-                   target="_blank" rel="noopener noreferrer">
-                    Open Image Gallery ↗
-                </a>
-            `
-        },
+    task2: {
+        number: "TASK 02",
+        title: "Image Gallery",
+        intro: "A visual project exploring image presentation and organized webpage layouts.",
+        content: `
+            <h3>Project overview</h3>
+            <p>An image gallery project focused on arranging images into an attractive visual layout.</p>
+            <h3>Skills explored</h3>
+            <ul>
+                <li>HTML image elements and alternative text.</li>
+                <li>CSS layouts, spacing and responsive grids.</li>
+                <li>Consistent visual presentation.</li>
+            </ul>
+            <a class="action-link"
+               href="https://syedanajeeha023.github.io/Image-Gallery/"
+               target="_blank" rel="noopener noreferrer">
+               Open Image Gallery ↗
+            </a>
+        `
+    },
 
-        task3: {
-            number: "TASK 03",
-            title: "Calculator",
-            intro: "A calculator interface designed to combine visual design with interactive arithmetic functionality.",
-            content: `
-                <h3>Project overview</h3>
-                <p>This project brings together interface styling, button interactions and calculation logic.</p>
-                <h3>Skills explored</h3>
-                <ul>
-                    <li>Designing a structured calculator layout with CSS Grid.</li>
-                    <li>Using JavaScript to respond to button clicks.</li>
-                    <li>Handling numbers, operators and calculation results.</li>
-                </ul>
-                <div class="preview-box">
-                    <h3>Next improvement</h3>
-                    <p>Add working JavaScript functions, input validation and error handling to make the calculator fully functional.</p>
-                </div>
-            `
-        },
+    task3: {
+        number: "TASK 03",
+        title: "My Calculator",
+        intro: "An interactive calculator project. Use the calculator below directly on this page.",
+        content: `
+            <h3>Live Calculator</h3>
+            <p>This is my calculator project, embedded directly into the portfolio.</p>
 
-        task4: {
-            number: "TASK 04",
-            title: "Coming Next",
-            intro: "This section is reserved for my next web development task.",
-            content: `
-                <h3>What's next?</h3>
-                <p>As I continue learning, I will add new projects and document the skills used to build each one.</p>
-                <ul>
-                    <li>Choose a new project idea.</li>
-                    <li>Build the interface with HTML and CSS.</li>
-                    <li>Add interactivity with JavaScript when needed.</li>
-                    <li>Publish the completed project using GitHub Pages.</li>
-                </ul>
-            `
-        }
-    };
+            <iframe
+                class="calculator-frame"
+                src="./Calculator/index.html"
+                title="My Calculator"
+                loading="lazy">
+            </iframe>
 
-    const detail = document.getElementById("detail");
-    const title = document.getElementById("detail-title");
-    const label = document.getElementById("detail-label");
-    const intro = document.getElementById("detail-intro");
-    const content = document.getElementById("detail-content");
-    const breadcrumb = document.getElementById("breadcrumb-name");
+            <p style="margin-top:15px;">
+                If the calculator does not appear, make sure you have uploaded
+                Calculator/index.html and its related CSS and JavaScript files
+                to your GitHub repository.
+            </p>
 
-    function showPage(page) {
-        document.querySelectorAll(".nav-item, .task-card").forEach(item => {
-            item.classList.toggle("active", item.dataset.page === page &&
-                item.classList.contains("nav-item"));
+            <a class="action-link"
+               href="./Calculator/index.html"
+               target="_blank" rel="noopener noreferrer">
+               Open Calculator in a New Tab ↗
+            </a>
+        `
+    },
 
-            if (item.classList.contains("task-card")) {
-                item.classList.toggle("selected", item.dataset.page === page);
-            }
-        });
+    task4: {
+        number: "TASK 04",
+        title: "Coming Next",
+        intro: "This section is reserved for my next web development project.",
+        content: `
+            <h3>What's next?</h3>
+            <p>I will continue adding projects as I develop my web development skills.</p>
+            <ul>
+                <li>Choose a new project idea.</li>
+                <li>Build its interface using HTML and CSS.</li>
+                <li>Add JavaScript interactivity where needed.</li>
+                <li>Publish the finished project using GitHub Pages.</li>
+            </ul>
+        `
+    }
+};
 
-        if (page === "home") {
-            detail.classList.remove("visible");
-            breadcrumb.textContent = "Overview";
-            document.getElementById("overview").scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-            return;
-        }
+const detail = document.getElementById("detail");
+const detailLabel = document.getElementById("detail-label");
+const detailTitle = document.getElementById("detail-title");
+const detailIntro = document.getElementById("detail-intro");
+const detailContent = document.getElementById("detail-content");
+const breadcrumb = document.getElementById("breadcrumb-name");
 
-        const task = tasks[page];
-        if (!task) return;
+function showPage(page) {
+    document.querySelectorAll(".nav-item").forEach(button => {
+        button.classList.toggle("active", button.dataset.page === page);
+    });
 
-        label.textContent = task.number + " / PROJECT DETAILS";
-        title.textContent = task.title;
-        intro.textContent = task.intro;
-        content.innerHTML = task.content;
-        breadcrumb.textContent = task.title;
+    document.querySelectorAll(".task-card").forEach(button => {
+        button.classList.toggle("selected", button.dataset.page === page);
+    });
 
-        detail.classList.add("visible");
+    if (page === "home") {
+        detail.classList.remove("visible");
+        breadcrumb.textContent = "Overview";
 
-        detail.scrollIntoView({
+        document.getElementById("overview").scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
+        return;
     }
 
-    document.querySelectorAll("[data-page]").forEach(button => {
-        button.addEventListener("click", () => {
-            showPage(button.dataset.page);
-        });
+    const task = tasks[page];
+    if (!task) return;
+
+    detailLabel.textContent = task.number + " / PROJECT DETAILS";
+    detailTitle.textContent = task.title;
+    detailIntro.textContent = task.intro;
+    detailContent.innerHTML = task.content;
+    breadcrumb.textContent = task.title;
+
+    detail.classList.add("visible");
+
+    detail.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
     });
+}
+
+document.querySelectorAll("[data-page]").forEach(button => {
+    button.addEventListener("click", () => {
+        showPage(button.dataset.page);
+    });
+});
 </script>
 
 </body>
