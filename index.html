@@ -22,11 +22,7 @@
     --shadow: 0 8px 28px rgba(45, 43, 85, .06);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -35,18 +31,9 @@ body {
     min-height: 100vh;
 }
 
-button, a {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
+button, a { font: inherit; }
+button { cursor: pointer; }
+a { text-decoration: none; color: inherit; }
 
 .layout {
     display: grid;
@@ -55,7 +42,6 @@ a {
 }
 
 /* SIDEBAR */
-
 .sidebar {
     background: var(--white);
     border-right: 1px solid var(--border);
@@ -83,16 +69,8 @@ a {
     font-weight: 800;
 }
 
-.brand h2 {
-    font-size: 17px;
-    letter-spacing: -.5px;
-}
-
-.brand p {
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 5px;
-}
+.brand h2 { font-size: 17px; letter-spacing: -.5px; }
+.brand p  { font-size: 10px; color: var(--muted); margin-top: 5px; }
 
 .nav-label {
     color: #9697aa;
@@ -119,10 +97,7 @@ a {
     transition: .2s;
 }
 
-.nav-item:hover {
-    background: #f7f5ff;
-    color: var(--purple);
-}
+.nav-item:hover { background: #f7f5ff; color: var(--purple); }
 
 .nav-item.active {
     background: var(--purple-light);
@@ -131,11 +106,7 @@ a {
     font-weight: 600;
 }
 
-.nav-icon {
-    min-width: 24px;
-    text-align: center;
-    font-size: 14px;
-}
+.nav-icon { min-width: 24px; text-align: center; font-size: 14px; }
 
 .sidebar-bottom {
     margin-top: auto;
@@ -146,11 +117,8 @@ a {
     line-height: 2;
 }
 
-/* MAIN AREA */
-
-.main {
-    min-width: 0;
-}
+/* MAIN */
+.main { min-width: 0; }
 
 .topbar {
     min-height: 72px;
@@ -163,15 +131,8 @@ a {
     gap: 15px;
 }
 
-.breadcrumb {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.breadcrumb span {
-    color: var(--text);
-    font-weight: 600;
-}
+.breadcrumb { color: var(--muted); font-size: 12px; }
+.breadcrumb span { color: var(--text); font-weight: 600; }
 
 .github-link {
     padding: 10px 14px;
@@ -183,11 +144,7 @@ a {
     white-space: nowrap;
     transition: .2s;
 }
-
-.github-link:hover {
-    background: var(--purple-light);
-    border-color: #c9bfff;
-}
+.github-link:hover { background: var(--purple-light); border-color: #c9bfff; }
 
 .content {
     max-width: 1250px;
@@ -225,8 +182,7 @@ a {
     font-size: 14px;
 }
 
-/* STATISTICS */
-
+/* STATS */
 .stats {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -248,14 +204,9 @@ a {
     color: #6251bb;
     margin-bottom: 7px;
 }
-
-.stat span {
-    color: var(--muted);
-    font-size: 12px;
-}
+.stat span { color: var(--muted); font-size: 12px; }
 
 /* TASK CARDS */
-
 .section-heading {
     display: flex;
     justify-content: space-between;
@@ -264,16 +215,8 @@ a {
     margin-bottom: 22px;
 }
 
-.section-heading h2 {
-    font-size: 22px;
-    letter-spacing: -.7px;
-}
-
-.section-heading p {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 8px;
-}
+.section-heading h2 { font-size: 22px; letter-spacing: -.7px; }
+.section-heading p  { color: var(--muted); font-size: 12px; margin-top: 8px; }
 
 .section-tag {
     background: var(--purple-light);
@@ -339,10 +282,7 @@ a {
     letter-spacing: 1px;
 }
 
-.task-card h3 {
-    font-size: 17px;
-    margin-bottom: 10px;
-}
+.task-card h3 { font-size: 17px; margin-bottom: 10px; }
 
 .task-card > p {
     min-height: 44px;
@@ -361,10 +301,7 @@ a {
     border-top: 1px solid var(--border);
 }
 
-.task-type {
-    color: #7563c7;
-    font-size: 10px;
-}
+.task-type { color: #7563c7; font-size: 10px; }
 
 .open-task {
     color: var(--blue);
@@ -373,8 +310,7 @@ a {
     white-space: nowrap;
 }
 
-/* SELECTED TASK CONTENT */
-
+/* DETAIL PANEL */
 .detail {
     display: none;
     margin-top: 42px;
@@ -386,20 +322,11 @@ a {
     scroll-margin-top: 22px;
 }
 
-.detail.visible {
-    display: block;
-    animation: fadeIn .25s ease;
-}
+.detail.visible { display: block; animation: fadeIn .25s ease; }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .detail-label {
@@ -409,11 +336,7 @@ a {
     letter-spacing: 1.5px;
 }
 
-.detail h2 {
-    font-size: 27px;
-    margin: 13px 0;
-    letter-spacing: -.7px;
-}
+.detail h2 { font-size: 27px; margin: 13px 0; letter-spacing: -.7px; }
 
 .detail-intro,
 .detail-content p {
@@ -430,23 +353,10 @@ a {
     line-height: 1.8;
 }
 
-.detail-content h3 {
-    margin: 20px 0 10px;
-    font-size: 16px;
-}
-
-.detail-content h3:first-child {
-    margin-top: 0;
-}
-
-.detail-content ul {
-    padding-left: 21px;
-    color: var(--muted);
-}
-
-.detail-content li {
-    padding: 4px 0;
-}
+.detail-content h3 { margin: 20px 0 10px; font-size: 16px; }
+.detail-content h3:first-child { margin-top: 0; }
+.detail-content ul { padding-left: 21px; color: var(--muted); }
+.detail-content li { padding: 4px 0; }
 
 .preview-box {
     background: #f8f8fd;
@@ -455,10 +365,7 @@ a {
     border-radius: 12px;
     margin-top: 20px;
 }
-
-.preview-box h3 {
-    margin-top: 0;
-}
+.preview-box h3 { margin-top: 0; }
 
 .preview-gallery {
     display: grid;
@@ -474,18 +381,9 @@ a {
     border-radius: 11px;
     font-size: 27px;
 }
-
-.gallery-tile:nth-child(1) {
-    background: linear-gradient(135deg, #e9ddff, #d7e7ff);
-}
-
-.gallery-tile:nth-child(2) {
-    background: linear-gradient(135deg, #d9f4e8, #d9e9ff);
-}
-
-.gallery-tile:nth-child(3) {
-    background: linear-gradient(135deg, #ffe4ed, #e8ddff);
-}
+.gallery-tile:nth-child(1) { background: linear-gradient(135deg, #e9ddff, #d7e7ff); }
+.gallery-tile:nth-child(2) { background: linear-gradient(135deg, #d9f4e8, #d9e9ff); }
+.gallery-tile:nth-child(3) { background: linear-gradient(135deg, #ffe4ed, #e8ddff); }
 
 .action-link {
     display: inline-flex;
@@ -500,21 +398,41 @@ a {
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
+    transition: .2s;
 }
+.action-link:hover { background: #6652c8; }
 
-.action-link:hover {
-    background: #6652c8;
-}
-
-.calculator-frame {
-    display: block;
-    width: 100%;
-    height: 620px;
+/* LIVE PROJECT IFRAME FRAME */
+.project-frame-wrap {
+    position: relative;
+    margin-top: 20px;
     border: 1px solid var(--border);
     border-radius: 13px;
+    overflow: hidden;
     background: #f6f7fc;
-    margin-top: 20px;
 }
+
+.project-frame {
+    display: block;
+    width: 100%;
+    height: 720px;
+    border: 0;
+    background: #fff;
+}
+
+.project-frame-wrap::before {
+    content: "⏳ Loading live project…";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    font-size: 13px;
+    background: #f6f7fc;
+    z-index: 0;
+}
+
+.project-frame { position: relative; z-index: 1; }
 
 .footer {
     margin-top: 52px;
@@ -525,94 +443,42 @@ a {
     line-height: 1.9;
 }
 
-/* RESPONSIVE DESIGN */
-
+/* RESPONSIVE */
 @media (max-width: 850px) {
-    .layout {
-        grid-template-columns: 1fr;
-    }
-
+    .layout { grid-template-columns: 1fr; }
     .sidebar {
         padding: 16px 18px;
         border-right: none;
         border-bottom: 1px solid var(--border);
     }
-
-    .brand {
-        padding-bottom: 18px;
-    }
-
-    .nav-label,
-    .sidebar-bottom {
-        display: none;
-    }
-
+    .brand { padding-bottom: 18px; }
+    .nav-label, .sidebar-bottom { display: none; }
     .sidebar nav {
         display: flex;
         overflow-x: auto;
         gap: 6px;
     }
-
     .nav-item {
         width: auto;
         white-space: nowrap;
         margin-bottom: 0;
     }
-
-    .content {
-        padding-top: 35px;
-    }
+    .content { padding-top: 35px; }
 }
 
 @media (max-width: 540px) {
-    .topbar {
-        padding: 14px 18px;
-    }
-
-    .content {
-        padding: 30px 18px;
-    }
-
-    .stats {
-        gap: 9px;
-        margin: 26px 0 35px;
-    }
-
-    .stat {
-        padding: 13px;
-    }
-
-    .stat strong {
-        font-size: 22px;
-    }
-
-    .stat span {
-        font-size: 10px;
-    }
-
-    .task-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-heading h2 {
-        font-size: 19px;
-    }
-
-    .detail {
-        padding: 19px;
-    }
-
-    .preview-gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-tile {
-        min-height: 75px;
-    }
-
-    .calculator-frame {
-        height: 560px;
-    }
+    .topbar { padding: 14px 18px; }
+    .content { padding: 30px 18px; }
+    .stats { gap: 9px; margin: 26px 0 35px; }
+    .stat { padding: 13px; }
+    .stat strong { font-size: 22px; }
+    .stat span { font-size: 10px; }
+    .task-grid { grid-template-columns: 1fr; }
+    .section-heading h2 { font-size: 19px; }
+    .detail { padding: 19px; }
+    .preview-gallery { grid-template-columns: 1fr; }
+    .gallery-tile { min-height: 75px; }
+    .project-frame { height: 640px; }
 }
 </style>
 </head>
@@ -647,6 +513,9 @@ a {
             </button>
             <button class="nav-item" data-page="task4">
                 <span class="nav-icon">04</span> Task 4
+            </button>
+            <button class="nav-item" data-page="task5">
+                <span class="nav-icon">05</span> Grade Dashboard
             </button>
         </nav>
 
@@ -685,18 +554,9 @@ a {
             </section>
 
             <section class="stats">
-                <div class="stat">
-                    <strong>04</strong>
-                    <span>Task slots</span>
-                </div>
-                <div class="stat">
-                    <strong>03</strong>
-                    <span>Core web technologies</span>
-                </div>
-                <div class="stat">
-                    <strong>∞</strong>
-                    <span>Ideas to explore</span>
-                </div>
+                <div class="stat"><strong>05</strong><span>Task slots</span></div>
+                <div class="stat"><strong>03</strong><span>Core web technologies</span></div>
+                <div class="stat"><strong>∞</strong><span>Ideas to explore</span></div>
             </section>
 
             <section id="tasks">
@@ -758,6 +618,19 @@ a {
                         <p>A space for my next web development exercise or creative project.</p>
                         <div class="task-footer">
                             <span class="task-type">Future project</span>
+                            <span class="open-task">Explore ↗</span>
+                        </div>
+                    </button>
+
+                    <button class="task-card" data-page="task5">
+                        <div class="task-top">
+                            <span class="task-icon">🎓</span>
+                            <span class="task-number">TASK / 05</span>
+                        </div>
+                        <h3>Student Grade Dashboard</h3>
+                        <p>An interactive dashboard that calculates student grades, percentages and class statistics.</p>
+                        <div class="task-footer">
+                            <span class="task-type">HTML · CSS · JavaScript</span>
                             <span class="open-task">Explore ↗</span>
                         </div>
                     </button>
@@ -835,17 +708,21 @@ const tasks = {
             <h3>Live Calculator</h3>
             <p>This is my calculator project, embedded directly into the portfolio.</p>
 
-            <iframe
-                class="calculator-frame"
-                src="https://syedanajeeha023.github.io/Calculator/"
-                title="My Calculator"
-                loading="lazy">
-            </iframe>
+            <div class="project-frame-wrap">
+                <iframe
+                    class="project-frame"
+                    src="https://syedanajeeha023.github.io/Calculator/"
+                    title="My Calculator"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    allow="clipboard-write">
+                </iframe>
+            </div>
 
             <p style="margin-top:15px;">
-                If the calculator does not appear, make sure you have uploaded
-                Calculator/index.html and its related CSS and JavaScript files
-                to your GitHub repository.
+                If the calculator does not appear above, open it directly with
+                the button below — this is a common browser restriction when
+                a site blocks embedding.
             </p>
 
             <a class="action-link"
@@ -855,7 +732,6 @@ const tasks = {
             </a>
         `
     },
-    
 
     task4: {
         number: "TASK 04",
@@ -871,29 +747,78 @@ const tasks = {
                 <li>Publish the finished project using GitHub Pages.</li>
             </ul>
         `
+    },
+
+    task5: {
+        number: "TASK 05",
+        title: "Student Performance Dashboard",
+        intro: "An interactive grade calculator and performance dashboard built with pure HTML, CSS and JavaScript.",
+        content: `
+            <h3>Project overview</h3>
+            <p>
+                A university-style Student Performance Management System.
+                Teachers can register students, enter marks for five subjects,
+                and instantly see calculated totals, percentages, grades,
+                pass/fail status, class averages, and the highest-scoring student.
+            </p>
+
+            <h3>Features included</h3>
+            <ul>
+                <li>Registration form with full input validation.</li>
+                <li>Automatic total, percentage, grade and pass/fail calculation.</li>
+                <li>Duplicate registration number prevention.</li>
+                <li>Delete individual records and clear all records.</li>
+                <li>Class average, top performer and pass rate analytics.</li>
+                <li>Live search, sorting and filtering.</li>
+                <li>LocalStorage persistence so records survive page refreshes.</li>
+            </ul>
+
+            <h3>Live Demo</h3>
+            <p>The full working dashboard is embedded below.</p>
+
+            <div class="project-frame-wrap">
+                <iframe
+                    class="project-frame"
+                    src="https://syedanajeeha023.github.io/3-hour-class-task/"
+                    title="Student Performance Dashboard"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <p style="margin-top:15px;">
+                If the dashboard does not appear above, open it in a new tab
+                using the button below.
+            </p>
+
+            <a class="action-link"
+               href="https://syedanajeeha023.github.io/3-hour-class-task/"
+               target="_blank" rel="noopener noreferrer">
+               Open Dashboard in a New Tab ↗
+            </a>
+        `
     }
 };
 
-const detail = document.getElementById("detail");
-const detailLabel = document.getElementById("detail-label");
-const detailTitle = document.getElementById("detail-title");
-const detailIntro = document.getElementById("detail-intro");
+const detail        = document.getElementById("detail");
+const detailLabel   = document.getElementById("detail-label");
+const detailTitle   = document.getElementById("detail-title");
+const detailIntro   = document.getElementById("detail-intro");
 const detailContent = document.getElementById("detail-content");
-const breadcrumb = document.getElementById("breadcrumb-name");
+const breadcrumb    = document.getElementById("breadcrumb-name");
 
 function showPage(page) {
-    document.querySelectorAll(".nav-item").forEach(button => {
-        button.classList.toggle("active", button.dataset.page === page);
+    document.querySelectorAll(".nav-item").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.page === page);
     });
 
-    document.querySelectorAll(".task-card").forEach(button => {
-        button.classList.toggle("selected", button.dataset.page === page);
+    document.querySelectorAll(".task-card").forEach(btn => {
+        btn.classList.toggle("selected", btn.dataset.page === page);
     });
 
     if (page === "home") {
         detail.classList.remove("visible");
         breadcrumb.textContent = "Overview";
-
         document.getElementById("overview").scrollIntoView({
             behavior: "smooth",
             block: "start"
@@ -904,24 +829,18 @@ function showPage(page) {
     const task = tasks[page];
     if (!task) return;
 
-    detailLabel.textContent = task.number + " / PROJECT DETAILS";
-    detailTitle.textContent = task.title;
-    detailIntro.textContent = task.intro;
-    detailContent.innerHTML = task.content;
-    breadcrumb.textContent = task.title;
+    detailLabel.textContent   = task.number + " / PROJECT DETAILS";
+    detailTitle.textContent   = task.title;
+    detailIntro.textContent   = task.intro;
+    detailContent.innerHTML   = task.content;
+    breadcrumb.textContent    = task.title;
 
     detail.classList.add("visible");
-
-    detail.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+    detail.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 document.querySelectorAll("[data-page]").forEach(button => {
-    button.addEventListener("click", () => {
-        showPage(button.dataset.page);
-    });
+    button.addEventListener("click", () => showPage(button.dataset.page));
 });
 </script>
 
